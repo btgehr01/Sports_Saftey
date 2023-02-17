@@ -33,6 +33,8 @@ Open Visual Studio Code, Click File, Open Folder, select the project's base fold
 
 Open a terminal within VSCode by clicking Terminal, New terminal 
 
+run "npm install" to install all dependencies, if this fails, delete the node_modules folder and run "npm install"
+
 The Project can be hosted locally on http://localhost:3000/
 
 To start the project, change directories (cd) into the project's base folder via the terminal (sports_saftey),

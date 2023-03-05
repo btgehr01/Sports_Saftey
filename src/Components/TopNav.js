@@ -7,10 +7,8 @@ const TopNav = () => {
   return (
     <div className="top-nav">
       <Navbar key="top-navbar" bg="light" className="mb-3">
-        <Navbar.Brand href="/">EAP Application</Navbar.Brand>
+        <Navbar.Brand href="/">Sports Saftey EAP Application</Navbar.Brand>
         <Nav className="flex-grow-1">
-          <Nav.Link href="/View">View EAPs</Nav.Link>
-          <Nav.Link href="/EAPManagement">EAP Management</Nav.Link>
           <Nav.Link href="/UserManagement">User Management</Nav.Link>
         </Nav>
         <Form className="d-flex">

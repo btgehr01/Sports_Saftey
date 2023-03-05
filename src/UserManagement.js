@@ -1,7 +1,7 @@
 import React from "react";
 
 const UserManagement = () => {
-  return <div>Management</div>;
+  return <div>Org, Group, or User Management</div>;
 };
 
 export default UserManagement;

@@ -8,8 +8,10 @@ const OrganizationCard = ({ org }) => {
   return (
     <Card border="dark" style={{ width: "18rem" }}>
       <div onClick={() => navigate(`/Organization/${org.id}/Groups`)}>
-        <Card.Img variant="top" src={org.logo} />
-        <Card.Body>
+        <div className="card-image">
+          <Card.Img variant="top" src={org.logo} style={{ height: "200px" }} />
+        </div>
+        <Card.Body style={{ height: "200px", overflow: "scroll" }}>
           <Card.Title>{org.name}</Card.Title>
           <Card.Text>{org.bio}</Card.Text>
         </Card.Body>

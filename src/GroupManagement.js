@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import GroupCard from "./Components/GroupCard";
+import { Button } from "react-bootstrap";
+import "./ManagementScreen.scss";
 
 const GroupManagment = () => {
   const { OrganizationId } = useParams();
@@ -51,7 +53,7 @@ const GroupManagment = () => {
       id: "DuPontManualGroupId",
       name: "DuPont Manual High School",
       logo: "data:image/png;base64,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",
-      bio: "duPont Manual High School is a public magnet high school located in the Old Louisville neighborhood of Louisville, Kentucky, United States. It serves students in grades 9–12. It is a part of the Jefferson County Public School District. DuPont Manual is recognized by the United States Department of Education as a Blue Ribbon School.",
+      bio: "duPont Manual High School is a public magnet high school located in the Old Louisville neighborhood of Louisville, Kentucky, United States. It serves students in grades 9–12. It is a part of the Jefferson County Public School District.",
       createdBy: "MichaelNewman@manual.edu",
       EAPs: [
         {
@@ -99,11 +101,14 @@ const GroupManagment = () => {
   });
 
   return (
-    <>
-      <h2>{`${orgNameFromQuery} Groups`}</h2>
+    <div className="card-List">
+      <div className="list-header">
+        <h2>{`${orgNameFromQuery} Groups`}</h2>
+        <Button>+ Add Group</Button>
+      </div>
       <hr />
-      {groupCards}
-    </>
+      <div className="list-body">{groupCards}</div>
+    </div>
   );
 };
 

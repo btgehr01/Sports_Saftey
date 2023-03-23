@@ -12,8 +12,14 @@ const GroupCard = ({ orgId, group }) => {
           navigate(`/Organization/${orgId}/Group/${group.id}/EAPs`)
         }
       >
-        <Card.Img variant="top" src={group.logo} />
-        <Card.Body>
+        <div className="card-image">
+          <Card.Img
+            variant="top"
+            src={group.logo}
+            style={{ height: "200px" }}
+          />
+        </div>
+        <Card.Body style={{ height: "200px", overflow: "scroll" }}>
           <Card.Title>{group.name}</Card.Title>
           <Card.Text>{group.bio}</Card.Text>
         </Card.Body>

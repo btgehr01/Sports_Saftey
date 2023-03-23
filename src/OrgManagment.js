@@ -1,5 +1,7 @@
 import React from "react";
 import OrganizationCard from "./Components/OrganizationCard";
+import { Button } from "react-bootstrap";
+import "./ManagementScreen.scss";
 
 const OrgManagment = () => {
   const organizations = [
@@ -106,11 +108,14 @@ const OrgManagment = () => {
   });
 
   return (
-    <>
-      <h2>Organizations</h2>
+    <div className="card-List">
+      <div className="list-header">
+        <h2>Organizations</h2>
+        <Button>+ Add Organization</Button>
+      </div>
       <hr />
-      {OrganizationCards}
-    </>
+      <div className="list-body">{OrganizationCards}</div>
+    </div>
   );
 };
 

@@ -6,8 +6,14 @@ const EAPCard = ({ eapObject }) => {
   return (
     <Card border="dark" style={{ width: "18rem" }}>
       <div onClick={() => console.log("Download EAP PDF")}>
-        <Card.Img variant="top" src={eapObject.image} />
-        <Card.Body>
+        <div className="card-image">
+          <Card.Img
+            variant="top"
+            src={eapObject.image}
+            style={{ height: "200px" }}
+          />
+        </div>
+        <Card.Body style={{ height: "200px", overflow: "scroll" }}>
           <Card.Title>{eapObject.venueName}</Card.Title>
           <Card.Text>{eapObject.bio}</Card.Text>
         </Card.Body>
@@ -17,9 +23,13 @@ const EAPCard = ({ eapObject }) => {
       </ListGroup>
       <Card.Footer>
         <div className="display-card-action-buttons">
-          <Button>Edit</Button>
-          <Button variant="danger">Delete</Button>
-          <Button variant="outline-dark">Share</Button>
+          <Button onClick={() => console.log("edit")}>Edit</Button>
+          <Button variant="danger" onClick={() => console.log("delete")}>
+            Delete
+          </Button>
+          <Button variant="outline-dark" onClick={() => console.log("share")}>
+            Share
+          </Button>
         </div>
       </Card.Footer>
     </Card>

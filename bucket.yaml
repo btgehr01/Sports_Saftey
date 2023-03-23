@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: S3 Bucket for storage of EAPs
+Resources:
+  EAPBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: "eap-storage-bucket"
+  EAPBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref EAPBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Action:
+              - 's3:GetObject'
+            Effect: Allow
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref EAPBucket
+                - /*
+            Principal: '*'
+Outputs:
+  Arn:
+    Value: !GetAtt EAPBucket.Arn

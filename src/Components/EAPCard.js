@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, ListGroup, Button } from "react-bootstrap";
+import { Mode } from "../EAPManagement ";
 import "./OrganizationCard.scss";
 
-const EAPCard = ({ eapObject }) => {
+const EAPCard = ({ eapObject, setMode }) => {
   return (
     <Card border="dark" style={{ width: "18rem" }}>
       <div onClick={() => console.log("Download EAP PDF")}>
@@ -23,11 +24,11 @@ const EAPCard = ({ eapObject }) => {
       </ListGroup>
       <Card.Footer>
         <div className="display-card-action-buttons">
-          <Button onClick={() => console.log("edit")}>Edit</Button>
-          <Button variant="danger" onClick={() => console.log("delete")}>
+          <Button onClick={() => setMode(Mode.Edit)}>Edit</Button>
+          <Button variant="danger" onClick={() => setMode(Mode.Delete)}>
             Delete
           </Button>
-          <Button variant="outline-dark" onClick={() => console.log("share")}>
+          <Button variant="outline-dark" onClick={() => setMode(Mode.Share)}>
             Share
           </Button>
         </div>

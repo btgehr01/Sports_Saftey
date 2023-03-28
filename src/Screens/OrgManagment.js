@@ -1,5 +1,5 @@
 import React from "react";
-import OrganizationCard from "./Components/OrganizationCard";
+import OrganizationCard from "../Components/OrganizationCard";
 import { Button } from "react-bootstrap";
 import "./ManagementScreen.scss";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, ListGroup, Button } from "react-bootstrap";
-import { Mode } from "../EAPManagement ";
+import { Mode } from "../Screens/EAPManagement ";
 import "./OrganizationCard.scss";
 
 const EAPCard = ({ eapObject, setMode }) => {

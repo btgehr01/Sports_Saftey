@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import GroupCard from "./Components/GroupCard";
+import GroupCard from "../Components/GroupCard";
 import { Button } from "react-bootstrap";
 import "./ManagementScreen.scss";
 

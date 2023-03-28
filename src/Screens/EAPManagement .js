@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
-import AddEAPModal from "./Components/AddEAPModal";
-import EditEAPModal from "./Components/EditEAPModal";
-import DeleteEAPModal from "./Components/DeleteEAPModal";
-import ShareEAPModal from "./Components/ShareEAPModal";
-import EAPCard from "./Components/EAPCard";
+import AddEAPModal from "../Components/AddEAPModal";
+import EditEAPModal from "../Components/EditEAPModal";
+import DeleteEAPModal from "../Components/DeleteEAPModal";
+import ShareEAPModal from "../Components/ShareEAPModal";
+import EAPCard from "../Components/EAPCard";
 import "./ManagementScreen.scss";
 
 export const Mode = {

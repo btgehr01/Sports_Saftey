@@ -4,10 +4,10 @@ import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import TopNav from "./Components/TopNav";
 import LandingPage from "./LandingPage";
-import GroupManagment from "./GroupManagement";
-import OrgManagment from "./OrgManagment";
-import UserManagement from "./UserManagement";
-import EAPManagement from "./EAPManagement ";
+import GroupManagment from "./Screens/GroupManagement";
+import OrgManagment from "./Screens/OrgManagment";
+import UserManagement from "./Screens/UserManagement";
+import EAPManagement from "./Screens/EAPManagement ";
 
 const App = () => {
   const { isLoading } = useAuth0();

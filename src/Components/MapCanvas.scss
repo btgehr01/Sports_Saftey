@@ -1,0 +1,22 @@
+
+.map-canvas-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 40px;
+.map-canvas{
+    display: flex;
+    align-items: flex-start; 
+    justify-content:center;
+    flex-direction:column;
+    .save-button{
+        display:flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding-top: 10px;
+    }
+}
+    .map-output{
+        min-width: 400px;
+    }
+}

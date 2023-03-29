@@ -1,0 +1,11 @@
+.progress-container{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    .step-labels{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 10px;
+    }
+}

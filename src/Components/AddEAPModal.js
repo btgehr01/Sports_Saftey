@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import FormProgress from "./FormProgress";
 import AddressForm from "./AddressForm";
 import ContactForm from "./ContactForm";
 import DrawRouteForm from "./DrawRouteForm";
@@ -57,7 +58,10 @@ const AddEAPModal = ({ onClose }) => {
       <Modal.Header closeButton>
         <Modal.Title>Add EAP</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{renderScreen()}</Modal.Body>
+      <Modal.Body>
+        <FormProgress step={step} />
+        {renderScreen()}
+      </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onClose}>
           Close

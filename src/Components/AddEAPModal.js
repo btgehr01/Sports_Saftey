@@ -7,11 +7,9 @@ import EAPSummaryForm from "./EAPSummaryForm";
 
 const AddEAPModal = ({ onClose }) => {
   const [step, setStep] = useState(1);
-  const [validated, setValidated] = useState(false);
   const [eapObject, setEAPObject] = useState({});
 
   const incrementStep = () => {
-    setValidated(false);
     setStep(step + 1);
   };
 
@@ -20,21 +18,35 @@ const AddEAPModal = ({ onClose }) => {
   };
 
   const renderScreen = () => {
+    console.log("eapObject", eapObject);
     console.log("step", step);
     switch (step) {
       case 1:
         return (
           <AddressForm
+            eapObject={eapObject}
             setEAPObject={setEAPObject}
-            setValidated={setValidated}
+            incrementStep={incrementStep}
           />
         );
       case 2:
-        return <ContactForm />;
+        return (
+          <ContactForm
+            eapObject={eapObject}
+            setEAPObject={setEAPObject}
+            incrementStep={incrementStep}
+          />
+        );
       case 3:
-        return <DrawRouteForm />;
+        return (
+          <DrawRouteForm
+            eapObject={eapObject}
+            setEAPObject={setEAPObject}
+            incrementStep={incrementStep}
+          />
+        );
       case 4:
-        return <EAPSummaryForm />;
+        return <EAPSummaryForm setStep={setStep} onSubmit={onSubmit} />;
       default:
         return null;
     }
@@ -51,11 +63,7 @@ const AddEAPModal = ({ onClose }) => {
           Close
         </Button>
 
-        <Button
-          variant="primary"
-          disabled={!validated}
-          onClick={step < 4 ? incrementStep : onSubmit}
-        >
+        <Button variant="primary" type="submit" form="addForm">
           {step < 4 ? "Next" : "Submit"}
         </Button>
       </Modal.Footer>

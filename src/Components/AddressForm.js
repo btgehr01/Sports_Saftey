@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { STATES, CANADIANTERRITORIES, COUNTRIES } from "../Constants/constant";
 import "./Form.scss";
 
-const AddressForm = ({ setEAPObject, setValidated }) => {
+const AddressForm = ({ eapObject, setEAPObject, incrementStep }) => {
   return (
     <Formik
       initialValues={{
@@ -28,15 +28,22 @@ const AddressForm = ({ setEAPObject, setValidated }) => {
           .min(5, "zip code must be at least 5 characters")
           .required("Required"),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      onSubmit={(values) => {
+        const address = {
+          venueName: values.venueName,
+          streetAddress: values.streetAddress,
+          streetAddress2: values.streetAddress2,
+          city: values.city,
+          state: values.state,
+          country: values.country,
+          zipCode: values.zipCode,
+        };
+        setEAPObject({ ...eapObject, address: address });
+        incrementStep();
       }}
     >
       {(formik) => (
-        <Form onSubmit={formik.handleSubmit}>
+        <Form id="addForm" onSubmit={formik.handleSubmit}>
           <Form.Group className="mb-3" controlId="formGridAddress1">
             <Form.Label>Name of Venue*</Form.Label>
             <Form.Control

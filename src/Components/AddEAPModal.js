@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Spinner } from "react-bootstrap";
 import FormProgress from "./FormProgress";
 import AddressForm from "./AddressForm";
 import ContactForm from "./ContactForm";
@@ -9,18 +9,22 @@ import EAPSummaryForm from "./EAPSummaryForm";
 const AddEAPModal = ({ onClose }) => {
   const [step, setStep] = useState(1);
   const [eapObject, setEAPObject] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const incrementStep = () => {
     setStep(step + 1);
   };
 
   const onSubmit = () => {
-    console.log("add EAP");
+    setIsLoading(true);
+    setTimeout(() => {
+      console.log("EAP to add", eapObject);
+      setIsLoading(false);
+    }, 2000);
   };
 
   const renderScreen = () => {
     console.log("eapObject", eapObject);
-    console.log("step", step);
     switch (step) {
       case 1:
         return (
@@ -47,7 +51,30 @@ const AddEAPModal = ({ onClose }) => {
           />
         );
       case 4:
-        return <EAPSummaryForm setStep={setStep} onSubmit={onSubmit} />;
+        return (
+          <EAPSummaryForm
+            setStep={setStep}
+            incrementStep={incrementStep}
+            eapObject={eapObject}
+            onSubmit={onSubmit}
+          />
+        );
+      case 5:
+        return (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {isLoading ? (
+              <Spinner animation="border" />
+            ) : (
+              <h4>{`Successfully Created EAP for ${eapObject.address.venueName}`}</h4>
+            )}
+          </div>
+        );
       default:
         return null;
     }
@@ -56,7 +83,7 @@ const AddEAPModal = ({ onClose }) => {
   return (
     <>
       <Modal.Header closeButton>
-        <Modal.Title>Add EAP</Modal.Title>
+        <Modal.Title>Create EAP</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <FormProgress step={step} />
@@ -66,10 +93,11 @@ const AddEAPModal = ({ onClose }) => {
         <Button variant="secondary" onClick={onClose}>
           Close
         </Button>
-
-        <Button variant="primary" type="submit" form="addForm">
-          {step < 4 ? "Next" : "Submit"}
-        </Button>
+        {step < 5 ? (
+          <Button variant="primary" type="submit" form="addForm">
+            {step < 4 ? "Next" : "Create EAP"}
+          </Button>
+        ) : null}
       </Modal.Footer>
     </>
   );

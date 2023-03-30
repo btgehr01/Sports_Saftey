@@ -7,12 +7,12 @@ const FormProgress = ({ step }) => {
     "Venue Information",
     "Emergency Contacts",
     "Emergency Routes",
-    "EAP Info Summary",
+    "EAP Submission",
   ];
 
   const renderStepLabels = () => {
-    return formSteps.map((step) => {
-      return <h4>{step}</h4>;
+    return formSteps.map((step, index) => {
+      return <h4 key={index}>{step}</h4>;
     });
   };
 

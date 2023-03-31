@@ -8,11 +8,11 @@ const ContactForm = ({ eapObject, setEAPObject, incrementStep }) => {
   return (
     <Formik
       initialValues={{
-        name: "",
-        phoneNumber: "",
-        email: "",
-        type: "",
-        role: "",
+        name: eapObject.contact.name,
+        phoneNumber: eapObject.contact.phoneNumber,
+        email: eapObject.contact.email,
+        type: eapObject.contact.type,
+        role: eapObject.contact.role,
       }}
       validationSchema={Yup.object({
         name: Yup.string().required("Required"),

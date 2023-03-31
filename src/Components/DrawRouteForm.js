@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MapCanvas from "./MapCanvas";
 import { Form } from "react-bootstrap";
 import "./Form.scss";
@@ -6,6 +6,16 @@ import "./Form.scss";
 const DrawRouteForm = ({ eapObject, setEAPObject, incrementStep }) => {
   const [base64Image, setBase64Image] = useState("");
   const [requiredMessage, setRequiredMessage] = useState("");
+
+  useEffect(() => {
+    if (base64Image) {
+      deleteRequiredMessage();
+    }
+  });
+
+  const deleteRequiredMessage = () => {
+    setRequiredMessage("");
+  };
 
   const exampleURL =
     "https://maps.googleapis.com/maps/api/staticmap?center=Berkeley,CA&zoom=17&size=400x400&key=YOUR_API_KEY&signature=YOUR_SIGNATURE";
@@ -24,9 +34,12 @@ const DrawRouteForm = ({ eapObject, setEAPObject, incrementStep }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (base64Image) {
-      setRequiredMessage("");
+      deleteRequiredMessage();
       setEAPObject({ ...eapObject, image: base64Image });
       incrementStep();
+      //gone back to edit the EAP emergency route image
+    } else if (eapObject.image) {
+      setRequiredMessage("Please click the save image button to continue.");
     } else {
       setRequiredMessage("Sketching an Emergency Route is Required");
     }
@@ -36,7 +49,7 @@ const DrawRouteForm = ({ eapObject, setEAPObject, incrementStep }) => {
     <Form id="addForm" onSubmit={(event) => handleSubmit(event)}>
       <h4>Google Maps API URL: {}</h4>
       <MapCanvas
-        src={imgSource}
+        src={eapObject.image || imgSource}
         base64Image={base64Image}
         setBase64Image={setBase64Image}
       />

@@ -7,12 +7,39 @@ import DrawRouteForm from "./DrawRouteForm";
 import EAPSummaryForm from "./EAPSummaryForm";
 
 const AddEAPModal = ({ onClose }) => {
+  const initialEAPObject = {
+    venueName: "",
+    address: {
+      streetAddress: "",
+      streetAddress2: "",
+      city: "",
+      state: "",
+      country: "",
+      zipCode: "",
+    },
+    contact: {
+      name: "",
+      phoneNumber: "",
+      email: "",
+      type: "",
+      role: "",
+    },
+    image: "",
+  };
+
+  const SUBMISSIONSTEP = 4;
+
   const [step, setStep] = useState(1);
-  const [eapObject, setEAPObject] = useState({});
+  const [eapObject, setEAPObject] = useState(initialEAPObject);
+  const [goneBackToEdit, setGoneBackToEdit] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const incrementStep = () => {
-    setStep(step + 1);
+    if (goneBackToEdit) {
+      setStep(SUBMISSIONSTEP);
+    } else {
+      setStep(step + 1);
+    }
   };
 
   const onSubmit = () => {
@@ -54,6 +81,7 @@ const AddEAPModal = ({ onClose }) => {
         return (
           <EAPSummaryForm
             setStep={setStep}
+            setGoneBackToEdit={setGoneBackToEdit}
             incrementStep={incrementStep}
             eapObject={eapObject}
             onSubmit={onSubmit}
@@ -71,7 +99,7 @@ const AddEAPModal = ({ onClose }) => {
             {isLoading ? (
               <Spinner animation="border" />
             ) : (
-              <h4>{`Successfully Created EAP for ${eapObject.address.venueName}`}</h4>
+              <h4>{`Successfully Created EAP for ${eapObject.venueName}`}</h4>
             )}
           </div>
         );

@@ -9,13 +9,13 @@ const AddressForm = ({ eapObject, setEAPObject, incrementStep }) => {
   return (
     <Formik
       initialValues={{
-        venueName: "",
-        streetAddress: "",
-        streetAddress2: "",
-        city: "",
-        state: "",
-        country: "",
-        zipCode: "",
+        venueName: eapObject.venueName,
+        streetAddress: eapObject.address.streetAddress,
+        streetAddress2: eapObject.address.streetAddress2,
+        city: eapObject.address.city,
+        state: eapObject.address.state,
+        country: eapObject.address.country,
+        zipCode: eapObject.address.zipCode,
       }}
       validationSchema={Yup.object({
         venueName: Yup.string().required("Required"),
@@ -30,7 +30,6 @@ const AddressForm = ({ eapObject, setEAPObject, incrementStep }) => {
       })}
       onSubmit={(values) => {
         const address = {
-          venueName: values.venueName,
           streetAddress: values.streetAddress,
           streetAddress2: values.streetAddress2,
           city: values.city,
@@ -38,7 +37,11 @@ const AddressForm = ({ eapObject, setEAPObject, incrementStep }) => {
           country: values.country,
           zipCode: values.zipCode,
         };
-        setEAPObject({ ...eapObject, address: address });
+        setEAPObject({
+          ...eapObject,
+          venueName: values.venueName,
+          address: address,
+        });
         incrementStep();
       }}
     >

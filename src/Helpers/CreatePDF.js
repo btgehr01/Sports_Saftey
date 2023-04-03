@@ -14,39 +14,37 @@ const s3 = new AWS.S3({
   secretAccessKey: secretkey,
 });
 
-const CreatePDF = async ({data}) => {
-
-  console.log(data)
+const CreatePDF = async ({eapObject}) => {
 
   // Create a new PDFDocument instance
-  
+
   const doc = await PDFDocument.create();
 
   // Set the document title
-  doc.setTitle(`${data.address.venueName}`);
+  doc.setTitle(`${eapObject.venueName}`);
 
   // Set the document author
-  doc.setAuthor(`${data.contact.name}`);
+  doc.setAuthor(`${eapObject.contact.name}`);
 
   // Add a new page to the document
   const page = doc.addPage();
 
   // Add content to the page
-  page.drawText(`Venue Name: ${data.address.venueName}`, { x: 50, y: 750 });
-  page.drawText(`Address: ${data.address.streetAddress}`, { x: 50, y: 730 });
-  page.drawText(`Address 2: ${data.address.streetAddress2}`, { x: 50, y: 710 });
-  page.drawText(`City: ${data.address.city}`, { x: 50, y: 690 });
-  page.drawText(`State: ${data.address.state}`, { x: 50, y: 670 });
-  page.drawText(`Country: ${data.address.country}`, { x: 50, y: 650 });
-  page.drawText(`Zip Code: ${data.address.zipCode}`, { x: 50, y: 630 });
-  page.drawText(`Contact Name: ${data.contact.name}`, { x: 50, y: 610 });
-  page.drawText(`Phone Number: ${data.contact.phoneNumber}`, { x: 50, y: 590 });
-  page.drawText(`Email: ${data.contact.email}`, { x: 50, y: 570 });
-  page.drawText(`Contact Type: ${data.contact.type}`, { x: 50, y: 550 });
-  page.drawText(`Contact Role: ${data.contact.role}`, { x: 50, y: 530 });
+  page.drawText(`Venue Name: ${eapObject.venueName}`, { x: 50, y: 750 });
+  page.drawText(`Address: ${eapObject.address.streetAddress}`, { x: 50, y: 730 });
+  page.drawText(`Address 2: ${eapObject.address.streetAddress2}`, { x: 50, y: 710 });
+  page.drawText(`City: ${eapObject.address.city}`, { x: 50, y: 690 });
+  page.drawText(`State: ${eapObject.address.state}`, { x: 50, y: 670 });
+  page.drawText(`Country: ${eapObject.address.country}`, { x: 50, y: 650 });
+  page.drawText(`Zip Code: ${eapObject.address.zipCode}`, { x: 50, y: 630 });
+  page.drawText(`Contact Name: ${eapObject.contact.name}`, { x: 50, y: 610 });
+  page.drawText(`Phone Number: ${eapObject.contact.phoneNumber}`, { x: 50, y: 590 });
+  page.drawText(`Email: ${eapObject.contact.email}`, { x: 50, y: 570 });
+  page.drawText(`Contact Type: ${eapObject.contact.type}`, { x: 50, y: 550 });
+  page.drawText(`Contact Role: ${eapObject.contact.role}`, { x: 50, y: 530 });
 
   // Generate a unique file name for the PDF document
-  const fileName = `${data.address.venueName}.pdf`;
+  const fileName = `${eapObject.venueName}.pdf`;
 
   const pdfBytes = await doc.save();
 

@@ -5,6 +5,7 @@ import AddressForm from "./AddressForm";
 import ContactForm from "./ContactForm";
 import DrawRouteForm from "./DrawRouteForm";
 import EAPSummaryForm from "./EAPSummaryForm";
+import CreatePDF from "../Helpers/CreatePDF";
 
 const AddEAPModal = ({ onClose }) => {
   const initialEAPObject = {
@@ -46,6 +47,7 @@ const AddEAPModal = ({ onClose }) => {
     setIsLoading(true);
     setTimeout(() => {
       console.log("EAP to add", eapObject);
+      CreatePDF({eapObject})
       setIsLoading(false);
     }, 2000);
   };

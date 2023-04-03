@@ -1,5 +1,5 @@
 import React from "react";
-import OrgManagment from "./OrgManagment";
+import OrgManagment from "./Screens/OrgManagment";
 import "./LandingPage.scss";
 
 const LandingPage = () => {

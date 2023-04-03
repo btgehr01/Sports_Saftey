@@ -1,3 +1,5 @@
+# AWS Clouformation template for all stack resources
+# This is grabbed by the Makefile from aws cloudformation create-stack
 AWSTemplateFormatVersion: "2010-09-09"
 Description: S3 Bucket for storage of EAPs
 Resources:
@@ -5,6 +7,19 @@ Resources:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: "eap-storage-bucket"
+      CorsConfiguration:
+        CorsRules:
+          - AllowedOrigins:
+              - "*"
+            AllowedMethods:
+              - "HEAD"
+              - "GET"
+              - "PUT"
+              - "POST"
+              - "DELETE"
+            AllowedHeaders:
+              - "*"
+            MaxAge: 3000
   EAPBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:

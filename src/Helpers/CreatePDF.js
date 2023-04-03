@@ -60,14 +60,8 @@ const CreatePDF = async ({eapObject}) => {
 
     // Once the PDF has been generated and uploaded, trigger a download in the browser
     const url = s3Response.Location;
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', fileName);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
 
-  return <button onClick={CreatePDF}>Create PDF</button>;
+  return url;
 };
 
 export default CreatePDF;

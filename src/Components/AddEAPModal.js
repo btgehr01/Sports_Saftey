@@ -5,6 +5,7 @@ import AddressForm from "./AddressForm";
 import ContactForm from "./ContactForm";
 import DrawRouteForm from "./DrawRouteForm";
 import EAPSummaryForm from "./EAPSummaryForm";
+import CreatePDF from "../Helpers/CreatePDF";
 
 const AddEAPModal = ({ onClose }) => {
   const initialEAPObject = {
@@ -25,6 +26,7 @@ const AddEAPModal = ({ onClose }) => {
       role: "",
     },
     image: "",
+    file: "",
   };
 
   const SUBMISSIONSTEP = 4;
@@ -42,12 +44,12 @@ const AddEAPModal = ({ onClose }) => {
     }
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setIsLoading(true);
-    setTimeout(() => {
-      console.log("EAP to add", eapObject);
-      setIsLoading(false);
-    }, 2000);
+    const linkToPDF = await CreatePDF({eapObject});
+     console.log("EAP location: ", linkToPDF);
+    setEAPObject({...eapObject, file:linkToPDF})
+    setIsLoading(false);
   };
 
   const renderScreen = () => {
@@ -99,7 +101,15 @@ const AddEAPModal = ({ onClose }) => {
             {isLoading ? (
               <Spinner animation="border" />
             ) : (
+              <div>
               <h4>{`Successfully Created EAP for ${eapObject.venueName}`}</h4>
+              <a 
+              href= {eapObject.file}
+              target="_blank" rel="noopener noreferrer"
+              >
+                {eapObject.file}
+                </a>
+              </div>
             )}
           </div>
         );

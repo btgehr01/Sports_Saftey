@@ -52,7 +52,20 @@ Use npm install (package name) to add packages to your project (seen within the 
 
 Happy developing :)
 
-
+AWS Setup
+This project uses AWS components for EAP file storage. In order to use these features for
+local setup, these steps must be taken. 
+1. Create a free AWS account (Running the project should incur no cost)
+2. Install the AWS CLI on your machine. I used pip install awscli but there are other means
+3. Setup your credentials. This can be done by going to your AWS account, security credentials
+and creating an access key. Make sure to save this info. Once retreived, put ~/.aws/credentials
+into your command prompt/IDE and follow the steps.
+4. After this setup you should be able to create the cloudformation stack. This can be done
+via the Makefile. Using make create for stack creation and make delete for stack deletion.
+5. In order to make any changes. Refer to the bucket.yaml and follow AWS documentation for developing 
+cloudformation stack templates as there are many resources for assisting you on this. 
+6. You should also setup local environment variables using set for windows machines and export for Mac 
+    ex: set AWS_SECRET_ACCESS_KEY=******
 
 Project Structure:
 

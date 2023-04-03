@@ -1,10 +1,9 @@
-
+# In order to add more Makefile commands, add a new .PHONY word and follow the syntax of the others
 .PHONY:	create delete update
 
+# Clouformation Stack MetaData Variables
 STACK_NAME := eap-storage
-
 TEMPLATE_FILE := bucket.yaml
-
 AWS_REGION := us-east-1
 
 create:

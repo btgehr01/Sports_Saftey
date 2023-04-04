@@ -20,6 +20,7 @@ Use this video to guide you through the download processes or follow the steps o
 
 1. Download nodejs and npm (LTS version) via https://nodejs.org/en/ 
 2. Download Visual Studio Code via https://code.visualstudio.com/download
+3. Clone the github repository onto your local device using the git clone command (assuming you have the git cli installed and configured)
 
 *Creation Process:
 
@@ -31,9 +32,9 @@ via instruction from https://reactjs.org/docs/create-a-new-react-app.html
 
 Open Visual Studio Code, Click File, Open Folder, select the project's base folder (sports_saftey)
 
-Open a terminal within VSCode by clicking Terminal, New terminal 
+Open a terminal within VSCode by clicking Terminal, New terminal (I prefer using git bash)
 
-run "npm install" to install all dependencies, if this fails, delete the node_modules folder and run "npm install"
+run "npm install" to install all project dependencies located within the package.json file, if this fails, delete the node_modules folder and run "npm install" again
 
 The Project can be hosted locally on http://localhost:3000/
 
@@ -49,6 +50,8 @@ this powerful tool is very useful for debugging and viewing compile and runtime 
 *Adding packages to your project:
 
 Use npm install (package name) to add packages to your project (seen within the node_modules folder and listed inside of package.json folder) 
+
+A complete current Component breakdown (SportsSafteyComponentBreakdown.docx) is available in EDUSourced under files
 
 Happy developing :)
 
@@ -67,7 +70,7 @@ cloudformation stack templates as there are many resources for assisting you on 
 6. You should also setup local environment variables using set for windows machines and export for Mac 
     ex: set AWS_SECRET_ACCESS_KEY=******
 
-Project Structure:
+Auth0 Setup: https://auth0.com/blog/complete-guide-to-react-user-authentication/
 
 React Bootstrap components:
 https://react-bootstrap.github.io/components/alerts

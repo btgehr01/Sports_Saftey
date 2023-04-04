@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import "./MapCanvas.scss";
 
 const MapCanvas = ({ src, base64Image, setBase64Image }) => {
+  // state variable used to signify if the user is drawing or not
   const [isDrawing, setIsDrawing] = useState(false);
   const canvasRef = useRef(null);
   const imageRef = useRef(null);
@@ -41,6 +42,7 @@ const MapCanvas = ({ src, base64Image, setBase64Image }) => {
   function handleSave() {
     const canvas = canvasRef.current;
     const dataURL = canvas.toDataURL();
+    //set the base64Image state variable within the parent component
     setBase64Image(dataURL);
   }
 

@@ -27,7 +27,7 @@ const createGoogleMapsAPIURLFromEAPObject = (eapObject) => {
 export const simulateGoogleMapsAPICall = (eapObject) => {
   //Construct the GoogleMaps API URL using the "createGoogleMapsAPIURLFromEAPObject" helper function
   const URL = createGoogleMapsAPIURLFromEAPObject(eapObject);
-  //Call the URL using axios and retunr the result (image)
+  //Call the URL using axios and return the result (image)
   console.log("GoogleMapsAPICall", URL);
   return dummyGoodMapsImage;
 };

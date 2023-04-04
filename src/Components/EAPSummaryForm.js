@@ -9,12 +9,14 @@ const EAPSummaryForm = ({
   setStep,
   setGoneBackToEdit,
 }) => {
+  //this useEffect is used to set the goneBackToEdit state variable within the parent component to false when this form is visited
   useEffect(() => {
     setGoneBackToEdit(false);
   }, [setGoneBackToEdit]);
 
   const handleSubmit = () => {
     incrementStep();
+    //call the onSubmit function inside of the parent component
     onSubmit();
   };
 

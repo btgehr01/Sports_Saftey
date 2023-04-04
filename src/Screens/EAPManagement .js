@@ -18,9 +18,11 @@ export const Mode = {
 };
 
 const EAPManagement = () => {
+  //This react state variable will be used to decide which modal to show when a CRUD button is clicked
   const [mode, setMode] = useState(Mode.View);
-
+  //Pull the OrganizationId and groupId from the URL
   const { OrganizationId, GroupId } = useParams();
+  //Grab a group object through using a simulated API helper function
   const group = getGroupForGroupId(OrganizationId, GroupId);
   const eapObjectsFromGroupId = group?.EAPs;
 
@@ -35,7 +37,7 @@ const EAPManagement = () => {
       </div>
     );
   });
-
+  //TODO: add functionality to the edit, share, and delete EAP buttons
   return (
     <div className="card-List">
       <div className="list-header">

@@ -21,15 +21,20 @@ const DrawRouteForm = ({ eapObject, setEAPObject, incrementStep }) => {
   const imgSource = simulateGoogleMapsAPICall(eapObject);
 
   const handleSubmit = (event) => {
+    //prevent the form from submitting
     event.preventDefault();
+    //if the base64 image is set
     if (base64Image) {
       deleteRequiredMessage();
+      //set the image property within the EAP object within the parent component
       setEAPObject({ ...eapObject, image: base64Image });
       incrementStep();
       //gone back to edit the EAP emergency route image
     } else if (eapObject.image) {
+      //if the eapObject within the parent component is set (user went back to edit)
       setRequiredMessage("Please click the save image button to continue.");
     } else {
+        //set the required message if the user hasn't saved/drawn on the preloaded image
       setRequiredMessage("Sketching an Emergency Route is Required");
     }
   };

@@ -7,6 +7,11 @@ import Auth0ProviderWithHistory from "./auth0-provider-with-history";
 import "bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from "./reportWebVitals";
 
+/*
+this is where the web application starts, this component warps the App component within a browser router component,
+this allows the application to store the current location in the browser's address bar using clean URLs and navigate using the browser's built-in history stack
+*/
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

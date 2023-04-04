@@ -6,6 +6,9 @@ import { STATES, CANADIANTERRITORIES, COUNTRIES } from "../Constants/constant";
 import "./Form.scss";
 
 const AddressForm = ({ eapObject, setEAPObject, incrementStep }) => {
+  //formik is used to handle form variables and set an onSubmit callback function
+  //the initial values is used to set the form variables upon the initial load
+  //Yup is used for form validation
   return (
     <Formik
       initialValues={{
@@ -29,6 +32,7 @@ const AddressForm = ({ eapObject, setEAPObject, incrementStep }) => {
           .required("Required"),
       })}
       onSubmit={(values) => {
+        //create an address object from the form values
         const address = {
           streetAddress: values.streetAddress,
           streetAddress2: values.streetAddress2,
@@ -37,11 +41,13 @@ const AddressForm = ({ eapObject, setEAPObject, incrementStep }) => {
           country: values.country,
           zipCode: values.zipCode,
         };
+        //update the venueName and address properties within the EAP object within the parent component
         setEAPObject({
           ...eapObject,
           venueName: values.venueName,
           address: address,
         });
+        //increment the EAP form process step
         incrementStep();
       }}
     >

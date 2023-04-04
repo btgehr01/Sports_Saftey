@@ -19,6 +19,7 @@ const App = () => {
       </Spinner>
     );
   }
+  //return a specific component based on the current URL within the application using react-router Routes (like a switch statement of routes)
   return (
     <div id="app" className="d-flex flex-column h-100">
       <TopNav />

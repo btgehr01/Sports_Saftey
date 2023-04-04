@@ -6,6 +6,7 @@ const ShareEAPModal = ({ onClose }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [shareableLink, setShareableLink] = useState("");
 
+  //TODO: useEffect will be used to initially set the above sharable link state variable based off of the fileLocation property for the specific EAPObject
   useEffect(() => {
     setShareableLink(
       "localhost:3000/Organization/UofLHealthOrgId/Group/UofLFootballGroupId/EAPs"

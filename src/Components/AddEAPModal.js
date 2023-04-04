@@ -46,9 +46,9 @@ const AddEAPModal = ({ onClose }) => {
 
   const onSubmit = async () => {
     setIsLoading(true);
-    const linkToPDF = await CreatePDF({eapObject});
-     console.log("EAP location: ", linkToPDF);
-    setEAPObject({...eapObject, file:linkToPDF})
+    const linkToPDF = await CreatePDF({ eapObject });
+    console.log("EAP location: ", linkToPDF);
+    setEAPObject({ ...eapObject, file: linkToPDF });
     setIsLoading(false);
   };
 
@@ -102,12 +102,13 @@ const AddEAPModal = ({ onClose }) => {
               <Spinner animation="border" />
             ) : (
               <div>
-              <h4>{`Successfully Created EAP for ${eapObject.venueName}`}</h4>
-              <a 
-              href= {eapObject.file}
-              target="_blank" rel="noopener noreferrer"
-              >
-                {eapObject.file}
+                <h4>{`Successfully Created EAP for ${eapObject.venueName}`}</h4>
+                <a
+                  href={eapObject.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {eapObject.file}
                 </a>
               </div>
             )}

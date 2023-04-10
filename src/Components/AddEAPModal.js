@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Modal, Button, Spinner } from "react-bootstrap";
 import FormProgress from "./FormProgress";
 import AddressForm from "./AddressForm";
@@ -8,6 +9,7 @@ import EAPSummaryForm from "./EAPSummaryForm";
 import CreatePDF from "../Helpers/CreatePDF";
 
 const AddEAPModal = ({ onClose }) => {
+  const { OrganizationId, GroupId } = useParams();
   //the initial EAP object for the whole AddEAPModal, this object is edited as each form is completed
   const initialEAPObject = {
     venueName: "",
@@ -28,6 +30,8 @@ const AddEAPModal = ({ onClose }) => {
     },
     image: "",
     file: "",
+    org: OrganizationId,
+    group: GroupId,
   };
 
   //number of forms located within the modal

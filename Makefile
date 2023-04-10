@@ -10,7 +10,7 @@ create:
 	aws cloudformation create-stack \
 	--stack-name $(STACK_NAME) \
 	--template-body file://$(TEMPLATE_FILE) \
-	--capabilities CAPABILITY_NAMED_IAM	\
+	--capabilities CAPABILITY_NAMED_IAM CAPABILITY_IAM	\
 	--region $(AWS_REGION)
 
 delete:

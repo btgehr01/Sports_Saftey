@@ -5,6 +5,9 @@ import * as Yup from "yup";
 import "./Form.scss";
 
 const ContactForm = ({ eapObject, setEAPObject, incrementStep }) => {
+  //formik is used to handle form variables and set an onSubmit callback function
+  //the initial values is used to set the form variables upon the initial load
+  //Yup is used for form validation
   return (
     <Formik
       initialValues={{
@@ -24,6 +27,7 @@ const ContactForm = ({ eapObject, setEAPObject, incrementStep }) => {
         role: Yup.string().required("Required"),
       })}
       onSubmit={(values) => {
+        //create a contact object from the form values
         const contact = {
           name: values.name,
           phoneNumber: values.phoneNumber,
@@ -31,10 +35,12 @@ const ContactForm = ({ eapObject, setEAPObject, incrementStep }) => {
           type: values.type,
           role: values.role,
         };
+        //set the contact property within the EAP object within the parent component
         setEAPObject({
           ...eapObject,
           contact: contact,
         });
+        //increment the EAP form process step
         incrementStep();
       }}
     >

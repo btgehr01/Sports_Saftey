@@ -110,18 +110,18 @@ follow these policies and procedures in the event of an emergency.`, { x: 100, y
 
   const pdfBytes = await doc.save();
 
-    // Upload the PDF to S3
-    const s3Params = {
-      Bucket: S3_BUCKET,
-      Key: fileName,
-      Body: pdfBytes,
-      ContentType: 'application/pdf',
-      ACL: 'public-read',
-    };
-    const s3Response = await s3.upload(s3Params).promise();
+  // Upload the PDF to S3
+  const s3Params = {
+    Bucket: S3_BUCKET,
+    Key: fileName,
+    Body: pdfBytes,
+    ContentType: "application/pdf",
+    ACL: "public-read",
+  };
+  const s3Response = await s3.upload(s3Params).promise();
 
-    // Once the PDF has been generated and uploaded, trigger a download in the browser
-    const url = s3Response.Location;
+  // Once the PDF has been generated and uploaded, trigger a download in the browser
+  const url = s3Response.Location;
 
   return url;
 };

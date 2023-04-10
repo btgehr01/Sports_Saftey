@@ -10,6 +10,7 @@ import CreatePDF from "../Helpers/CreatePDF";
 
 const AddEAPModal = ({ onClose }) => {
   const { OrganizationId, GroupId } = useParams();
+  //the initial EAP object for the whole AddEAPModal, this object is edited as each form is completed
   const initialEAPObject = {
     venueName: "",
     address: {
@@ -33,13 +34,19 @@ const AddEAPModal = ({ onClose }) => {
     group: GroupId,
   };
 
+  //number of forms located within the modal
   const SUBMISSIONSTEP = 4;
 
+  //state variable that holds what form step the user is currently working on
   const [step, setStep] = useState(1);
+  //state variable that holds the eapObject that gets updated as the form is completed
   const [eapObject, setEAPObject] = useState(initialEAPObject);
+  //state variable that holds a boolean that represents if the user has gone back to edit one of the forms (used to bring the user to the submission step)
   const [goneBackToEdit, setGoneBackToEdit] = useState(false);
+  //state variable that holds a boolean that represents if the form is loading upon submission
   const [isLoading, setIsLoading] = useState(false);
 
+  //
   const incrementStep = () => {
     if (goneBackToEdit) {
       setStep(SUBMISSIONSTEP);
@@ -48,14 +55,17 @@ const AddEAPModal = ({ onClose }) => {
     }
   };
 
+  //called when the add EAP process is completed/submitted
   const onSubmit = async () => {
     setIsLoading(true);
-    const linkToPDF = await CreatePDF({eapObject});
-     console.log("EAP location: ", linkToPDF);
-    setEAPObject({...eapObject, file:linkToPDF})
+    const linkToPDF = await CreatePDF({ eapObject });
+    console.log("EAP location: ", linkToPDF);
+    setEAPObject({ ...eapObject, file: linkToPDF });
+    //TODO: store the eapObject within a database hosted on the AWS cloud through an API call
     setIsLoading(false);
   };
 
+  //conditional rendering of the form seen within the modal component based upon the step the user is currently on
   const renderScreen = () => {
     console.log("eapObject", eapObject);
     switch (step) {
@@ -106,12 +116,13 @@ const AddEAPModal = ({ onClose }) => {
               <Spinner animation="border" />
             ) : (
               <div>
-              <h4>{`Successfully Created EAP for ${eapObject.venueName}`}</h4>
-              <a 
-              href= {eapObject.file}
-              target="_blank" rel="noopener noreferrer"
-              >
-                {eapObject.file}
+                <h4>{`Successfully Created EAP for ${eapObject.venueName}`}</h4>
+                <a
+                  href={eapObject.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {eapObject.file}
                 </a>
               </div>
             )}
@@ -122,6 +133,8 @@ const AddEAPModal = ({ onClose }) => {
     }
   };
 
+  //the button located within the modal's footer is hooked up to submit every form within the add EAP process (trigger the onSubmit function for the form element)
+  //with a bit of magic of course :)
   return (
     <>
       <Modal.Header closeButton>

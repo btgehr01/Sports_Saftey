@@ -59,7 +59,6 @@ const AddEAPModal = ({ onClose }) => {
   const onSubmit = async () => {
     setIsLoading(true);
     const linkToPDF = await CreatePDF({ eapObject });
-    console.log("EAP location: ", linkToPDF);
     setEAPObject({ ...eapObject, file: linkToPDF });
     //TODO: store the eapObject within a database hosted on the AWS cloud through an API call
     setIsLoading(false);
@@ -67,7 +66,6 @@ const AddEAPModal = ({ onClose }) => {
 
   //conditional rendering of the form seen within the modal component based upon the step the user is currently on
   const renderScreen = () => {
-    console.log("eapObject", eapObject);
     switch (step) {
       case 1:
         return (

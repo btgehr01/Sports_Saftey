@@ -2,12 +2,18 @@ import React from 'react';
 import { PDFDocument, rgb} from 'pdf-lib';
 import AWS from 'aws-sdk';
 
+import { PDFDocument } from "pdf-lib";
+import AWS from "aws-sdk";
 
+// Found in .env folder
 const key =  process.env.REACT_APP_MY_ACCESS_KEY_ID;
 const secretkey =  process.env.REACT_APP_MY_SECRET_ACCESS_KEY;
+
+//Update these to selected region and created bucket name
 const S3_BUCKET = 'eap-storage-bucket';
 const REGION = 'us-east-1';
 
+//Connects to created AWS Bucket
 const s3 = new AWS.S3({
   params: { Bucket: S3_BUCKET },
   region: REGION,
@@ -25,8 +31,6 @@ const CreatePDF = async ({eapObject}) => {
   doc.setTitle(`${eapObject.venueName}`);
   // Set the document author
   doc.setAuthor(`${eapObject.contact.name}`);
-
-
 
   const front_page = doc.addPage();
   front_page.drawText(`${eapObject.group}`, { x: 100, y: 700, size: 40});

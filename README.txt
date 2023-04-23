@@ -64,11 +64,22 @@ local setup, these steps must be taken.
 and creating an access key. Make sure to save this info. Once retreived, put ~/.aws/credentials
 into your command prompt/IDE and follow the steps.
 4. After this setup you should be able to create the cloudformation stack. This can be done
-via the Makefile. Using make create for stack creation and make delete for stack deletion.
+via the Makefile. Using make create for stack creation and make delete for stack deletion. (If you're developing through windows you may need to install make. I used choco, but a quick google search can give a tutorial for install)
 5. In order to make any changes. Refer to the bucket.yaml and follow AWS documentation for developing 
 cloudformation stack templates as there are many resources for assisting you on this. 
 6. You should also setup local environment variables using set for windows machines and export for Mac 
     ex: set AWS_SECRET_ACCESS_KEY=******
+
+Future AWS Development:
+Setting up a group account. 
+Create a team member IAM User with least privilege in mind (Giving only necessary permissions)
+Looking into bucket policies to reduce cost when moving to larger scale (Shifting EAPs to infrequent-access if the object isn't retireved after a certain period)
+Adding in a potential database for users (DynamoDB or RDS)
+If Auth0 isn't working potentially moving to a cognito pool
+Moving React to Amplify or some other AWS hosting service
+
+If you have any questions regarding the current AWS setup, most of this work was done by me (David Antosh) and you can reach out via my contact infromation at the top of the ReadMe
+
 
 Auth0 Setup: https://auth0.com/blog/complete-guide-to-react-user-authentication/
 

@@ -9,7 +9,7 @@ const ShareEAPModal = ({ onClose }) => {
   //TODO: useEffect will be used to initially set the above sharable link state variable based off of the fileLocation property for the specific EAPObject
   useEffect(() => {
     setShareableLink(
-      "localhost:3000/Organization/UofLHealthOrgId/Group/UofLFootballGroupId/EAPs"
+      "https://eap-storage-bucket-brady.s3.amazonaws.com/UofLHealthOrgId/1234567/Cardinal%20Stadium.pdf"
     );
     setIsLoading(false);
   }, []);

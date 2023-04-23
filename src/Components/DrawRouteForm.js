@@ -34,14 +34,13 @@ const DrawRouteForm = ({ eapObject, setEAPObject, incrementStep }) => {
       //if the eapObject within the parent component is set (user went back to edit)
       setRequiredMessage("Please click the save image button to continue.");
     } else {
-        //set the required message if the user hasn't saved/drawn on the preloaded image
+      //set the required message if the user hasn't saved/drawn on the preloaded image
       setRequiredMessage("Sketching an Emergency Route is Required");
     }
   };
 
   return (
     <Form id="addForm" onSubmit={(event) => handleSubmit(event)}>
-      <h4>Google Maps API URL: {}</h4>
       <MapCanvas
         src={eapObject.image || imgSource}
         base64Image={base64Image}
